@@ -1,0 +1,56 @@
+zabbix_export:
+  version: '6.2'
+  date: '2023-01-05T12:49:56Z'
+  template_groups:
+    -
+      uuid: 1f85a37c7e044eb694649a08d65663c2
+      name: 'Test template'
+  templates:
+    -
+      uuid: f50ccdf1e3c44762bca981445d959005
+      template: 'Netology home work 9.3'
+      name: 'Netology home work 9.3'
+      groups:
+        -
+          name: 'Test template'
+      items:
+        -
+          uuid: 3480cd666fac4487a80e17b5e6cb6367
+          name: 'Netology User Parametr test FIO'
+          key: 'NetologyTest[1]'
+          trends: '0'
+          value_type: TEXT
+        -
+          uuid: 8b6cd887ad3142bfb030c742c2bdc8f8
+          name: 'Netology User Parametr test data'
+          key: 'NetologyTest[2]'
+          trends: '0'
+          value_type: TEXT
+        -
+          uuid: 27aa4b09a2ee47de93a1da18b26a1527
+          name: 'CPU Netology'
+          key: system.cpu.util
+          value_type: FLOAT
+          units: '%'
+          description: 'CPU %.'
+        -
+          uuid: 1f54570a5a4a410ab21108518581f2ce
+          name: 'Total memory'
+          key: 'vm.memory.size[total]'
+          units: B
+          description: 'Total memory in Bytes.'
+        -
+          uuid: 66a0a562c33c4dfb9caf09c741b7e9ba
+          name: 'Used memory'
+          key: 'vm.memory.size[used]'
+          units: B
+          description: 'Used memory in Bytes.'
+        -
+          uuid: fb7f2168c4f94aa79aff39700c6e5c67
+          name: 'Memory Netology'
+          type: CALCULATED
+          key: vm.memory.util
+          value_type: FLOAT
+          units: '%'
+          params: 'last(//vm.memory.size[used]) / last(//vm.memory.size[total]) * 100'
+          description: 'Memory %'
